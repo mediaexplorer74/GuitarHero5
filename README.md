@@ -27,8 +27,8 @@ The songs were presented in their original audio and full length, unlike some ot
 - Live Services patching (not ready yet) 
 
 ## TODO
-- Fix 100500 possible bugs :)
-- Add kbd / mouse game input
+- Fix 100500 possible bugs (broken game storage, no achievemenents etc.)
+- Add kbd game input
 - Change "Mobile" label to "Universal"? ;)))
 
 ## Reference(s)
