@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: com.glu.game.CGuitarHeroGame
 // Assembly: Guitar Hero 5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 86E366E3-F44F-4C53-89BA-5BEFDCC09A14
@@ -987,8 +987,10 @@ namespace com.glu.game
           byte num3 = this.m_pMusicScore[noteID][musicScoreOffset];
           if (1 == ((int) num3 & 3) && 128 != ((int) num3 & 128))
           {
-            ++CGHStaticData.m_missedNoteCount;
-            flag = true;
+            //TEMP / DEBUG
+            //++CGHStaticData.m_missedNoteCount;
+            //flag = true;
+            
             this.MuteAudioTrack(800);
             this.ClearConsecutiveHitNotes();
             if (64 == ((int) num3 & 64))
@@ -1005,7 +1007,9 @@ namespace com.glu.game
           }
         }
         if (flag)
-          ++CGHStaticData.m_missedNoteGroupCount;
+        {
+            //++CGHStaticData.m_missedNoteGroupCount;
+        }
       }
       if (num2 == 0)
       {
@@ -1924,7 +1928,8 @@ namespace com.glu.game
       for (int index3 = 1; index3 <= index1; ++index3)
       {
         int num4 = font.MeasureTextWidth(text.Substring(numArray[index3 - 1]), numArray[index3] - numArray[index3 - 1]);
-        font.PaintText(text.Substring(numArray[index3 - 1]), numArray[index3] - numArray[index3 - 1], drawX - (num4 >> 1), drawY - (bExpandAbove ? index1 + 1 - index3 : -(index3 - 1)) * fontHeight);
+        font.PaintText(text.Substring(numArray[index3 - 1]), numArray[index3] - numArray[index3 - 1], drawX - (num4 >> 1), 
+            drawY - (bExpandAbove ? index1 + 1 - index3 : -(index3 - 1)) * fontHeight);
       }
     }
 
@@ -2098,7 +2103,8 @@ namespace com.glu.game
       if (!flag && 8 == ((int) this.m_pMusicScore[(int) noteID][musicScoreOffset] & 8))
         this.pHud.SetMessage(CHud.eHUDMessageID.INDEX_STRINGAME_HOLD_THAT_NOTE, CHud.eHUDMessageID.INDEX_STRINVALID);
       int num4 = 0;
-      for (int index = num2 + 1; index <= num1 && 4 == ((int) this.m_pMusicScore[(int) noteID][index] & 4) && 1 != ((int) this.m_pMusicScore[(int) noteID][index] & 1); this.m_pMusicScore[(int) noteID][index++] &= (byte) 247)
+      for (int index = num2 + 1; index <= num1 && 4 == ((int) this.m_pMusicScore[(int) noteID][index] & 4) 
+                && 1 != ((int) this.m_pMusicScore[(int) noteID][index] & 1); this.m_pMusicScore[(int) noteID][index++] &= (byte) 247)
       {
         if (flag && 8 == ((int) this.m_pMusicScore[(int) noteID][index] & 8))
           ++num4;
@@ -2169,7 +2175,8 @@ namespace com.glu.game
       bool flag = false;
       for (int index = 0; !flag && index < this.m_numStarPowersInList; ++index)
       {
-        if (this.m_pStarPowersList[index].m_bActive && this.m_pStarPowersList[index].m_eventTime <= songPosition && songPosition < this.m_pStarPowersList[index].m_eventTime + this.m_pStarPowersList[index].m_eventLength)
+        if (this.m_pStarPowersList[index].m_bActive && this.m_pStarPowersList[index].m_eventTime <= songPosition
+                    && songPosition < this.m_pStarPowersList[index].m_eventTime + this.m_pStarPowersList[index].m_eventLength)
         {
           this.m_pStarPowersList[index].m_bActive = false;
           flag = true;
@@ -2300,7 +2307,9 @@ namespace com.glu.game
 
     private void CalculateSongFinalStatistics()
     {
-      CGHStaticData.m_percentageNotesHit = CGHStaticData.m_hitNoteGroupCount + CGHStaticData.m_missedNoteGroupCount == 0 ? 0 : CGHStaticData.m_hitNoteGroupCount * 100 / (CGHStaticData.m_hitNoteGroupCount + CGHStaticData.m_missedNoteGroupCount);
+      CGHStaticData.m_percentageNotesHit = CGHStaticData.m_hitNoteGroupCount 
+                + CGHStaticData.m_missedNoteGroupCount == 0 
+                ? 0 : CGHStaticData.m_hitNoteGroupCount * 100 / (CGHStaticData.m_hitNoteGroupCount + CGHStaticData.m_missedNoteGroupCount);
       if (CGHStaticData.m_score > CGHStaticData.m_starRatingbaseScore * 280 / 100)
         CGHStaticData.m_starRating = 5;
       else if (CGHStaticData.m_score > CGHStaticData.m_starRatingbaseScore << 1)
@@ -3470,6 +3479,9 @@ namespace com.glu.game
       if (this.m_bPointerActive && this.m_bRealPointerActive)
         this.m_touchButtonHeld = CGuitarHeroGame.eButtonID.BUTTON_INVALID;
       this.m_bRealPointerActive = true;
+      
+      // Включаем видимость курсора мыши
+      com.glu.shared.MouseInput.MouseVisible = true;
     }
 
     private void pointerReleased(int x, int y)

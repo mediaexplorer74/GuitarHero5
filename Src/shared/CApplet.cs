@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: com.glu.shared.CApplet
 // Assembly: shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 5E0A1C2A-EDE2-425A-9575-6DFDE88D9D48
@@ -52,7 +52,9 @@ namespace com.glu.shared
       this.m_graphics_mgr_xna = new GraphicsDeviceManager((Game) this);
       this.m_graphics_mgr_xna.PreferredBackBufferWidth = 320;
       this.m_graphics_mgr_xna.PreferredBackBufferHeight = 533;
-      this.m_graphics_mgr_xna.IsFullScreen = true;
+
+      // false -- TEMP / DEBUG
+      this.m_graphics_mgr_xna.IsFullScreen = false;//true;
       this.Content.RootDirectory = "Content";
     }
 
@@ -69,15 +71,23 @@ namespace com.glu.shared
       uint rc = CApplet.m_app.OnInit();
       if (rc != 0U)
         throw new cRC_Exception("CApplet:", rc, ":Unable to initialize CApp");
+      
+      // Инициализация системы ввода мыши
+      MouseInput.Initialize();
+      
       base.Initialize();
     }
 
     protected override void LoadContent()
     {
+      // Инициализация курсора мыши
+      MouseCursor.Initialize(this.GraphicsDevice);
     }
 
     protected override void UnloadContent()
     {
+      // Освобождение ресурсов курсора мыши
+      MouseCursor.Dispose();
     }
 
     protected override void Update(GameTime gameTime)
@@ -85,6 +95,10 @@ namespace com.glu.shared
       this.m_gameTime_xna = gameTime;
       if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
         this.m_eventQueue.Queue(3563016926U, 0U, 0U);
+      
+      // Обновление состояния мыши и генерация событий
+      MouseInput.Update(this);
+      
       this.generateEvents();
       this.processEvents();
       CAppExecutor executor = CApp.GetExecutor();
@@ -113,6 +127,9 @@ namespace com.glu.shared
       executor.SetMode(CAppExecutor.Mode.Render);
       executor.Run();
       base.Draw(gameTime);
+      
+      // Отрисовка курсора мыши
+      MouseCursor.Draw();
     }
 
     protected void processEvents()

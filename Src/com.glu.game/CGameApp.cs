@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: com.glu.game.CGameApp
 // Assembly: Guitar Hero 5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 86E366E3-F44F-4C53-89BA-5BEFDCC09A14
@@ -255,38 +255,41 @@ namespace com.glu.game
     }
 
     public override uint OnInit()
+  {
+    uint num = 1;
+    CApp.m_registry = CAppFactory.Instance.CreateRegistry();
+    if (CApp.m_registry != null)
     {
-      uint num = 1;
-      CApp.m_registry = CAppFactory.Instance.CreateRegistry();
-      if (CApp.m_registry != null)
-      {
-        this.InitRegistry();
+      this.InitRegistry();
+      num = 0U;
+    }
+    CApp.m_resourceManager = CAppFactory.Instance.CreateResourceManager();
+    if (CApp.m_resourceManager != null)
+    {
+      if (CApp.m_resourceManager.Initialize())
         num = 0U;
-      }
-      CApp.m_resourceManager = CAppFactory.Instance.CreateResourceManager();
-      if (CApp.m_resourceManager != null)
-      {
-        if (CApp.m_resourceManager.Initialize())
-          num = 0U;
-      }
-      else
-        num = 1U;
-      CApp.m_executor = CAppFactory.Instance.CreateExecutor();
-      if (CApp.m_executor != null)
-      {
-        if (CApp.m_executor.Init(new CAppExecutor.OnExecute(this.CAppExecutor_OnExecute), new CAppExecutor.InitRegistry(this.CAppExecutor_InitRegistry), (CAppExecutor.ReleaseRegistry) null))
-          num = 0U;
-      }
-      else
-        num = 1U;
-      this.m_listener = new CEventListener();
-      this.m_listener.Initialize(CHandleFactory.CreateHashKey("GameApp"), (object) this, new CEventListener.CEventListerner_EventHandler(CGameApp.EventCB));
-      this.m_listener.Register(CGameApp.CGameApp_InterestingEvents);
-      ICMediaPlayer.GetInstance();
-      this.m_pAccelerometer = new CAccelerometer();
-      ICGraphics.GetInstance().Initialize();
-      ICGraphics2d.GetInstance().Initialize();
-      LiveAchievements.GetInstance().init();
+    }
+    else
+      num = 1U;
+    CApp.m_executor = CAppFactory.Instance.CreateExecutor();
+    if (CApp.m_executor != null)
+    {
+      if (CApp.m_executor.Init(new CAppExecutor.OnExecute(this.CAppExecutor_OnExecute), new CAppExecutor.InitRegistry(this.CAppExecutor_InitRegistry), (CAppExecutor.ReleaseRegistry) null))
+        num = 0U;
+    }
+    else
+      num = 1U;
+    this.m_listener = new CEventListener();
+    this.m_listener.Initialize(CHandleFactory.CreateHashKey("GameApp"), (object) this, new CEventListener.CEventListerner_EventHandler(CGameApp.EventCB));
+    this.m_listener.Register(CGameApp.CGameApp_InterestingEvents);
+    ICMediaPlayer.GetInstance();
+    this.m_pAccelerometer = new CAccelerometer();
+    ICGraphics.GetInstance().Initialize();
+    ICGraphics2d.GetInstance().Initialize();
+    LiveAchievements.GetInstance().init();
+    
+    // Enable mouse cursor visibility by default
+    com.glu.shared.MouseInput.MouseVisible = true;
       this.m_pRootNode = (CNode) new CRootNode();
       CResourceManager resourceManager = CApp.GetResourceManager();
       resourceManager.AddDatabase("resource");

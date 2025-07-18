@@ -15,9 +15,9 @@ namespace com.glu.shared
     public const int FILE_SEEK_START = 0;
     public const int FILE_SEEK_CURRENT = 1;
     public const int FILE_SEEK_END = 2;
-    public /*FileStream*/ IsolatedStorageFileStream m_pFile;
+    public FileStream /*IsolatedStorageFileStream*/ m_pFile;
 
-    public ICFile() => this.m_pFile = (IsolatedStorageFileStream) null;
+    public ICFile() => this.m_pFile = null;//(IsolatedStorageFileStream) null;
 
     public SeekOrigin GetFileSeekType(int origin)
     {

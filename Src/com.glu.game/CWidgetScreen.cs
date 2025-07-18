@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: com.glu.game.CWidgetScreen
 // Assembly: Guitar Hero 5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 86E366E3-F44F-4C53-89BA-5BEFDCC09A14
@@ -491,13 +491,21 @@ namespace com.glu.game
           }
           this.TouchReset();
           break;
-        case 902053462:
+        case 902053462: // Touch Pressed
         case 2300082508:
           this.TouchPressed(TouchUtil.TOUCH_EVENT_GET_X((uint) param2), TouchUtil.TOUCH_EVENT_GET_Y((uint) param2));
           break;
-        case 902532892:
+        case 902532892: // Touch Move
         case 2186393822:
           this.TouchMove((uint) TouchUtil.TOUCH_EVENT_GET_X((uint) param2), (uint) TouchUtil.TOUCH_EVENT_GET_Y((uint) param2));
+          break;
+
+        // Mouse events (IDs должны быть определены согласно системе событий)
+        case 0x30000001: // Mouse Pressed (примерный ID)
+          this.TouchPressed(MouseUtil.MOUSE_EVENT_GET_X((uint)param2), MouseUtil.MOUSE_EVENT_GET_Y((uint)param2));
+          break;
+        case 0x30000002: // Mouse Move (примерный ID)
+          this.TouchMove((uint)MouseUtil.MOUSE_EVENT_GET_X((uint)param2), (uint)MouseUtil.MOUSE_EVENT_GET_Y((uint)param2));
           break;
       }
       if (!flag)

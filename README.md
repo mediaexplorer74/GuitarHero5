@@ -15,8 +15,9 @@ It included songs from the original mobile release, bonus tracks from BlackBerry
 ### Song Length
 The songs were presented in their original audio and full length, unlike some other mobile versions with shortened MIDI tracks. 
 
-## Screenshot(s)
-![Windows 11 Lite](Images/screenshot.png)
+## Screenshots
+![Windows 11 Lite](Images/sshot01.png)
+![Windows 11 Lite](Images/sshot02.png)
 
 ## My 2 cents
 - GuitarHero5 1.2 (xap) decompiled by JetBrains DotPeek decompiler

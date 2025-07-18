@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: com.glu.game.CMenuScreen
 // Assembly: Guitar Hero 5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 86E366E3-F44F-4C53-89BA-5BEFDCC09A14
@@ -78,8 +78,22 @@ namespace com.glu.game
     {
       CGHStaticData.GetInstance();
       bool flag = false;
+      
+      // Handle touch and mouse events
+      if (id == 902053462 || id == 2300082508 || id == 0x30000001) // Touch Pressed or Mouse Pressed
+      {
+        this.TouchPressed(TouchUtil.TOUCH_EVENT_GET_X((uint)param2), TouchUtil.TOUCH_EVENT_GET_Y((uint)param2));
+        flag = true;
+      }
+      else if (id == 902532892 || id == 2186393822 || id == 0x30000002) // Touch Move or Mouse Move
+      {
+        this.TouchMove((uint)TouchUtil.TOUCH_EVENT_GET_X((uint)param2), (uint)TouchUtil.TOUCH_EVENT_GET_Y((uint)param2));
+        flag = true;
+      }
+      
       if (this.HandleMovieOut(id, param1, param2))
         return true;
+      
       switch (id)
       {
         case 129075783:

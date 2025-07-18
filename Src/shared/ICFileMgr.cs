@@ -5,8 +5,10 @@
 // Assembly location: C:\Users\Admin\Desktop\RE\Guitar_Hero_5_v1.2\shared.dll
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.IO.IsolatedStorage;
+using Windows.Storage;
 
 #nullable disable
 namespace com.glu.shared
@@ -22,9 +24,9 @@ namespace com.glu.shared
 
     public string GetApplicationPath() => "";
 
-    public string GetApplicationDataPath() => "";
+    public string GetApplicationDataPath() => ApplicationData.Current.LocalFolder.Path;//"";
 
-    public string GetPathSeparator() => "\\";
+        public string GetPathSeparator() => "\\";
 
     public ICFile Open(string wcsFileName, int mode)
     {
@@ -38,7 +40,7 @@ namespace com.glu.shared
           {
            
             icFile.m_pFile = this.GetFileStream(wcsFileName, this.GetFileOpenMode(mode), 
-                this.GetFileAccessMode(mode));       
+                        this.GetFileAccessMode(mode));       
           }
           catch (Exception ex)
           {
@@ -50,9 +52,34 @@ namespace com.glu.shared
       return icFile;
     }
 
-    public IsolatedStorageFileStream GetFileStream(string wcsFileName, FileMode fileMode, FileAccess fileAccess)
+    public FileStream GetFileStream(string wcsFileName, FileMode fileMode, FileAccess fileAccess)
     {
-        return new IsolatedStorageFileStream(wcsFileName, fileMode, fileAccess, this.m_isolatedStorageInstance);
+        return new FileStream(wcsFileName, fileMode, fileAccess);
+    }
+
+    public StorageFile GetFile(string wcsFileName)
+    {
+        return StorageFile.GetFileFromPathAsync(wcsFileName).GetAwaiter().GetResult();
+    }
+
+    public StorageFile GetFileForWrite(string wcsFileName, CreationCollisionOption creationCollisionOption)
+    {
+        return StorageFile.GetFileFromPathAsync(wcsFileName).GetAwaiter().GetResult();
+    }
+
+    public StorageFolder GetFolder()
+    {
+        return ApplicationData.Current.LocalFolder;
+    }
+
+    public StorageFile GetFileForWrite(string wcsFileName)
+    {
+        return GetFolder().CreateFileAsync(wcsFileName, CreationCollisionOption.ReplaceExisting).GetAwaiter().GetResult();
+    }
+
+    public StorageFile GetFileForRead(string wcsFileName)
+    {
+        return GetFolder().GetFileAsync(wcsFileName).GetAwaiter().GetResult();
     }
 
     protected FileMode GetFileOpenMode(int mode)
@@ -139,6 +166,7 @@ namespace com.glu.shared
           }
           catch (Exception ex)
           {
+            Debug.WriteLine("[ex] ICFileMgr - Rename ex.: " + ex.Message);
           }
         }
       }
@@ -157,6 +185,7 @@ namespace com.glu.shared
         }
         catch (Exception ex)
         {
+           Debug.WriteLine("[ex] ICFileMgr - Delete ex.: " + ex.Message);
         }
       }
       return flag;
@@ -175,6 +204,7 @@ namespace com.glu.shared
         }
         catch (Exception ex)
         {
+           Debug.WriteLine("[ex] ICFileMgr - MkDir ex.: " + ex.Message);
         }
       }
       return flag;
@@ -193,6 +223,7 @@ namespace com.glu.shared
         }
         catch (Exception ex)
         {
+           Debug.WriteLine("[ex] ICFileMgr - RmDir ex.: " + ex.Message);
         }
       }
       return flag;
@@ -220,17 +251,18 @@ namespace com.glu.shared
         }
         catch (Exception ex)
         {
+           Debug.WriteLine("[ex] ICFileMgr - DeleteFilesInDir ex.: " + ex.Message);
         }
       }
       return flag;
     }
 
-        public long GetFreeDiskSpace()
-        {
-            return 100000000L;//this.m_isolatedStorageInstance.AvailableFreeSpace;
-        }
+    public long GetFreeDiskSpace()
+    {
+        return 100000000L;//this.m_isolatedStorageInstance.AvailableFreeSpace;
+    }
 
-        public static ICFileMgr GetInstance()
+    public static ICFileMgr GetInstance()
     {
       if (ICFileMgr.m_instance == null)
       {
