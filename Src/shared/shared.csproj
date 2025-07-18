@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{50019C4D-D31D-4FBE-A240-E19661B7DBF3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>shared</RootNamespace>
+    <AssemblyName>shared</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM64'">
+    <PlatformTarget>ARM64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM64'">
+    <PlatformTarget>ARM64</PlatformTarget>
+    <OutputPath>bin\ARM64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="1Vtx2d.cs" />
+    <Compile Include="AccelerometerUtil.cs" />
+    <Compile Include="CAccelerometer.cs" />
+    <Compile Include="CApp.cs" />
+    <Compile Include="CAppExecutor.cs" />
+    <Compile Include="CAppFactory.cs" />
+    <Compile Include="CApplet.cs" />
+    <Compile Include="CArrayInputStream.cs" />
+    <Compile Include="CArrayOutputStream.cs" />
+    <Compile Include="CBinary.cs" />
+    <Compile Include="CBitMath.cs" />
+    <Compile Include="CClass.cs" />
+    <Compile Include="CDrawUtil.cs" />
+    <Compile Include="CEvent.cs" />
+    <Compile Include="CEventListener.cs" />
+    <Compile Include="CExecutable.cs" />
+    <Compile Include="CExecutableRegistry.cs" />
+    <Compile Include="CFileInputStream.cs" />
+    <Compile Include="CFileOutputStream.cs" />
+    <Compile Include="CFileUtil.cs" />
+    <Compile Include="CFont.cs" />
+    <Compile Include="CGenUtil.cs" />
+    <Compile Include="CGraphicFont.cs" />
+    <Compile Include="CGraphics.cs" />
+    <Compile Include="CGraphics2d.cs" />
+    <Compile Include="CGraphics2dAbstract.cs" />
+    <Compile Include="CHandle.cs" />
+    <Compile Include="CHandleFactory.cs" />
+    <Compile Include="CHash.cs" />
+    <Compile Include="CIdToObjectRouter.cs" />
+    <Compile Include="CInputStream.cs" />
+    <Compile Include="CKeysetResource.cs" />
+    <Compile Include="Class.cs" />
+    <Compile Include="CLinkList.cs" />
+    <Compile Include="CLinkListNode.cs" />
+    <Compile Include="CMath.cs" />
+    <Compile Include="CMathFixed.cs" />
+    <Compile Include="CMatrix2d.cs" />
+    <Compile Include="CMatrix3d.cs" />
+    <Compile Include="CMatrix4d.cs" />
+    <Compile Include="CMedia.cs" />
+    <Compile Include="CMessage.cs" />
+    <Compile Include="Color.cs" />
+    <Compile Include="COutputStream.cs" />
+    <Compile Include="CPriorityClass.cs" />
+    <Compile Include="cRC.cs" />
+    <Compile Include="cRC_Exception.cs" />
+    <Compile Include="CRectangle.cs" />
+    <Compile Include="CRegistry.cs" />
+    <Compile Include="CRegistryElement.cs" />
+    <Compile Include="CRegistryItr.cs" />
+    <Compile Include="CRenderSurface.cs" />
+    <Compile Include="CRenderSurface_XNA_OffScreen.cs" />
+    <Compile Include="CRenderSurface_XNA_Window.cs" />
+    <Compile Include="CResource.cs" />
+    <Compile Include="CResourceBinary.cs" />
+    <Compile Include="CResourceKeyset.cs" />
+    <Compile Include="CResourceManager.cs" />
+    <Compile Include="CResourceManager_v3.cs" />
+    <Compile Include="CResourceMedia.cs" />
+    <Compile Include="CResourceRenderSurface.cs" />
+    <Compile Include="CResourceStrWChar.cs" />
+    <Compile Include="CSingleton.cs" />
+    <Compile Include="CStrChar.cs" />
+    <Compile Include="CStringToKey.cs" />
+    <Compile Include="CStrWChar.cs" />
+    <Compile Include="CSystem.cs" />
+    <Compile Include="CSystemElement.cs" />
+    <Compile Include="CSystemEventQueue.cs" />
+    <Compile Include="CTombstoneSaver.cs" />
+    <Compile Include="CVector.cs" />
+    <Compile Include="CVector2d.cs" />
+    <Compile Include="CVector3d.cs" />
+    <Compile Include="EventId.cs" />
+    <Compile Include="GamerServicesComponent.cs" />
+    <Compile Include="Handle.cs" />
+    <Compile Include="ICClass.cs" />
+    <Compile Include="ICCore.cs" />
+    <Compile Include="ICDebug.cs" />
+    <Compile Include="ICFile.cs" />
+    <Compile Include="ICFileMgr.cs" />
+    <Compile Include="ICGraphics.cs" />
+    <Compile Include="ICGraphics2d.cs" />
+    <Compile Include="ICMediaPlayer.cs" />
+    <Compile Include="ICPriorityClass.cs" />
+    <Compile Include="ICRenderSurface.cs" />
+    <Compile Include="MouseUtil.cs" />
+    <Compile Include="NPType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SoundFlag.cs" />
+    <Compile Include="SystemEvents.cs" />
+    <Compile Include="TCStack`1.cs" />
+    <Compile Include="tfnLinkListCompareItem.cs" />
+    <Compile Include="tfnLinkListCompareKey.cs" />
+    <Compile Include="tGTFChar.cs" />
+    <Compile Include="tGTFControlChar.cs" />
+    <Compile Include="tGTFHeader.cs" />
+    <Compile Include="TouchUtil.cs" />
+    <Compile Include="VTX2D.cs" />
+    <EmbeddedResource Include="Properties\shared.rd.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.2.14</Version>
+    </PackageReference>
+    <PackageReference Include="MonoGame.Framework.WindowsUniversal">
+      <Version>3.8.0.1641</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\binary\binary.csproj">
+      <Project>{677b8911-3f98-46b5-b4ef-35b5c595985c}</Project>
+      <Name>binary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\resgen\resgen.csproj">
+      <Project>{d48614ac-a34d-44b0-9c2f-9a440036c8a4}</Project>
+      <Name>resgen</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

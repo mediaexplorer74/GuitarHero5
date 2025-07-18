@@ -1,0 +1,8 @@
+﻿<Application
+    x:Class="com.glu.game.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:com.glu.game"
+    RequestedTheme="Light">
+
+</Application>
